@@ -1,34 +1,32 @@
-// animación para login (al principio)
-
 // busca a todos los child elements con la clase ".form" y los almacena en un arreglo
 const form = [...document.querySelector('.form').children];
 
-// para cada elemento, dentro de 100 milisegundos, le va a dar a los elementos opacidad de 1
+// animación para que los elementos aparezcan de uno en uno
 form.forEach((item, i) => {
     setTimeout(() => {
         item.style.opacity = 1;
     }, i*100);
 })
 
+// verifica si hay un valor almacenado en la variable de sesión "nombre" con sessionStorage, si hay algo ahí, redirecciona a '/'
 window.onload = () => {
-    if(sessionStorage.name){
+    if(sessionStorage.nombre){
         location.href = '/';
     }
 }
 
-// validación datos
+// Obtiene referencias a los elementos del form
 const nombre = document.querySelector('.nombre') || null;
 const email = document.querySelector('.email');
 const pass = document.querySelector('.pass');
 const submit = document.querySelector('.submit');
-// const submitRegister = document.querySelector('.submitRegister');
 
 if(nombre == null){ //cuando la pagina de login esté abierta
     submit.addEventListener('click', () => {
         fetch('/login-user',{
-            method: 'post',
+            method: 'post', // En el server.js se necesita
             headers: new Headers({'Content-Type': 'application/json'}),
-            body: JSON.stringify({
+            body: JSON.stringify({ //Se convierten en datos JSON
                 email: email.value,
                 pass: pass.value
             })
@@ -41,9 +39,9 @@ if(nombre == null){ //cuando la pagina de login esté abierta
 } else{ //cuando register esté abierto
     submit.addEventListener('click', () => {
         fetch('/register-user', {
-            method: 'post',
+            method: 'post', // En el server.js se necesita
             headers: new Headers({'Content-Type': 'application/json'}),
-            body: JSON.stringify({
+            body: JSON.stringify({ // Se convierten en datos JSON
                 nombre: nombre.value,
                 email: email.value,
                 pass: pass.value                
@@ -57,9 +55,9 @@ if(nombre == null){ //cuando la pagina de login esté abierta
 }
 
 const validateData = (data) => {
-    if(!data.nombre){
+    if(!data.nombre){ // Si no se proporciona un nombre, se crea un alert 
         alertBox(data);
-    } else{
+    } else{ // Si se proporciona el nombre, se redirecciona a '/'
         sessionStorage.nombre = data.nombre;
         sessionStorage.email = data.email;
         location.href = '/';
