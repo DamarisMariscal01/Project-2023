@@ -3,7 +3,7 @@ const saludo = document.querySelector('.saludo');
 window.onload = () => {
     if(!sessionStorage.nombre){
         location.href = '/login';
-    } else{
+    } else {
         saludo.innerHTML = `Hola ${sessionStorage.nombre}`;
     }
 }

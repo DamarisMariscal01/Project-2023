@@ -15,18 +15,18 @@ window.onload = () => {
     }
 }
 
-// Obtiene referencias a los elementos del form
+// obtiene referencias a los elementos del form
 const nombre = document.querySelector('.nombre') || null;
 const email = document.querySelector('.email');
 const pass = document.querySelector('.pass');
 const submit = document.querySelector('.submit');
 
-if(nombre == null){ //cuando la pagina de login esté abierta
+if(nombre == null){ // cuando la pagina de login esté abierta
     submit.addEventListener('click', () => {
         fetch('/login-user',{
-            method: 'post', // En el server.js se necesita
+            method: 'post', // en el server.js se necesita
             headers: new Headers({'Content-Type': 'application/json'}),
-            body: JSON.stringify({ //Se convierten en datos JSON
+            body: JSON.stringify({ // se convierten en datos JSON
                 email: email.value,
                 pass: pass.value
             })
@@ -36,12 +36,12 @@ if(nombre == null){ //cuando la pagina de login esté abierta
             validateData(data);
         })
     })
-} else{ //cuando register esté abierto
+} else{ // cuando register esté abierto
     submit.addEventListener('click', () => {
         fetch('/register-user', {
-            method: 'post', // En el server.js se necesita
+            method: 'post', // en el server.js se necesita
             headers: new Headers({'Content-Type': 'application/json'}),
-            body: JSON.stringify({ // Se convierten en datos JSON
+            body: JSON.stringify({ // se convierten en datos JSON
                 nombre: nombre.value,
                 email: email.value,
                 pass: pass.value                
@@ -54,16 +54,25 @@ if(nombre == null){ //cuando la pagina de login esté abierta
     })
 }
 
-const validateData = (data) => {
-    if(!data.nombre){ // Si no se proporciona un nombre, se crea un alert 
-        alertBox(data);
-    } else{ // Si se proporciona el nombre, se redirecciona a '/'
-        sessionStorage.nombre = data.nombre;
-        sessionStorage.email = data.email;
-        location.href = '/';
-    }
-}
+// const validateData = (data) => {
+//     if(!data.nombre){ // si no se proporciona un nombre, se crea un alert 
+//         alertBox(data);
+//     } else{ // si se proporciona el nombre, se redirecciona a '/'
+//         sessionStorage.nombre = data.nombre;
+//         sessionStorage.email = data.email;
+//         location.href = '/';
+//     }
+// }
 
+const validateData = (data) => {
+    if (!data.nombre) {
+      alertBox(data);
+    } else {
+      location.href = '/'; // Redirecciona a index.html
+    }
+  }
+  
+// los msjs del res.json se van acá
 const alertBox = (data) => {
     const alertContainer = document.querySelector('.alert-box');
     const alertMsg = document.querySelector('.alert');
