@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    font-family: "Poppins", sans-serif;
+}
+
+#header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 70px;
+    padding: 0 20px;
+    background: #fff;
+}
+
+.title{
+    text-decoration: none;
+    margin-top: -3px;
+}
+
+.title:hover{
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.container {
+    position: relative;
+    align-items: center;
+    flex-direction: row;
+    font-family: "Poppins", sans-serif;
+    width: 100%;
+}
+
+.nav-btn, a{
+    height: 40px;
+    border: none;
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    color: #ffffff;
+    border-radius: 1.5rem;
+}
+
+.nav-btn{
+    flex-wrap: norap;
+    margin-top: 15px;
+}
+
+.flashcards, .archivos, .notas, .logout{
+    padding: 12px;
+    font-size: 13.5px;
+}
+
+@media(max-width:1280px) {
+    .container {
+        width: 100%;
+    }
+}
+
+@media(max-width:480px) {
+    #header {
+        padding: 20px;
+        gap: 10px;
+        flex-direction: column;
+        align-items: center;
+    }
+}

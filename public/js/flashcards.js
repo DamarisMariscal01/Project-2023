@@ -26,10 +26,10 @@ flashcardMaker = (text, delThisIndex) => {
 
   flashcard.className = 'flashcard';
 
-  question.setAttribute("style", "border-top:1px solid red; padding: 15px; margin-top:30px");
+  question.setAttribute("style", "border-top:2px solid hotpink; padding: 15px; margin-top:30px; text-align: center;");
   question.textContent = text.my_question;
 
-  answer.setAttribute("style", "text-align:center; display:none; color:red");
+  answer.setAttribute("style", "text-align:center; display:none; color:hotpink");
   answer.textContent = text.my_answer;
 
   del.className = "fas fa-minus";
@@ -70,3 +70,9 @@ addFlashcard = () => {
   question.value = "";
   answer.value = "";
 }
+
+const card = document.querySelector(".card__inner");
+
+card.addEventListener("click", function (e) {
+  card.classList.toggle('is-flipped');
+});

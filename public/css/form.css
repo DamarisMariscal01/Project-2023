@@ -29,7 +29,7 @@ body{
     font-family: 'Poppins', sans-serif;
 }
 
-.loginTitle{
+.loginTitle, .registerTitle{
     opacity: 0;
     text-align: center;
     font-size: 80px;

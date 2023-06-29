@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 *{
   margin: 0;
@@ -7,43 +7,54 @@
 }
 
 body{
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: 1rem;
-  background: whitesmoke;
+  background-color: #ffc3e4;
 }
 
-button{
-  padding: 8px;
-  outline: none;
+.show, .delete{
+  padding: 12px;
   cursor: pointer;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-  background: whitesmoke;
+  border-radius: 1.5rem;
+  background-color: #ef2f8f;
+  font-weight: bold;
+  color: #fff;
+  border: none;
+  font-family: 'Poppins', sans-serif;
 }
 
-button:hover{
-  background-color: rgba(0, 0, 0, 0.1);
+.show:hover, .delete:hover{
+  background-color: #ffb9dc;
+  color: #ef2f8f;
 }
 
 .container{
   width: 1280px;
   margin: auto;
 }
+/* 
+header{
+  background-color: #fff;
+} */
 
-header{background-color: #fff;}
-
-#header{
+/* #header{
   display: flex;
   justify-content: space-between;
   align-items: center;
   min-height: 70px;
   padding: 0 20px;
   background: #fff;
+} */
+
+.title{
+  text-decoration: none;
+  color: #cf0067;
 }
 
-#header button{
-  font-family: inherit;
-  border: 1px solid red;
+.title:hover{
+  text-decoration: none;
+  cursor: pointer;
+  color: #ff69b4;
 }
 
 #create_card{
@@ -51,25 +62,63 @@ header{background-color: #fff;}
   width: 370px;
   margin:auto;
   padding: 20px;
-  margin-top: 10px;
-  background: whitesmoke;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.9);
+  margin-top: 30px;
+  border-radius: 12px;
+  background-color: #ff50a8;
 }
 
-#create_card h2{
-  color: black;
+.fcTitle{
   text-align: center;
+  opacity: 1;
+  font-size: 41px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #ffffff;
+  
 }
 
-#create_card textarea{
+textarea{
   width: 100%;
-  border-radius: 5px;
-  font-family: inherit;
-  border: 1px solid lightgray;
+  font-family: 'Poppins', sans-serif;
   resize: none;
+  border-radius: 1.5rem;
+  text-align: center;
+  margin-bottom: 10px;
+  padding: 4px;
+  align-items: center;
+  border: none;
 }
 
-#create_card button{width: fit-content;}
+textarea:focus{
+  background-color: #ffc3e4;
+  border: none;
+}
+
+.save, .close{
+  padding: 8px;
+  width: 162.5px;
+  border-radius: 1.5rem;
+  border: none;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  background-color: #ffc3e4;
+  font-weight: bold;
+  color: #ef2f8f;
+}
+
+.save:hover, .close:hover{
+  background-color: transparent;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.save{
+  margin-left: auto;
+}
+
+.close{
+  margin-right: auto;
+}
 
 #flashcards{
   display: flex;
@@ -89,11 +138,16 @@ header{background-color: #fff;}
   margin: 10px; 
   background:#fff;
   cursor: pointer;
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.9);
   position: relative;
+  border-radius: 12px;
 }
 
-.flashcard h2{font-size: 1rem;}
+.flashcard h2{
+  font-size: 1rem;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
 
 .fa-minus{
   top: 3%;
@@ -103,14 +157,16 @@ header{background-color: #fff;}
   transition: 0.3s ease-out;
 }
 
-.fa-minus:hover{color: red;}
-
 @media(max-width:1280px){
-  .container{width: 100%;}
+  .container{
+    width: 100%;
+  }
 }
 
 @media(max-width:768px){
-  .flashcard{margin: auto;}
+  .flashcard{
+    margin: auto;
+  }
 
   .flashcard{
     margin-top: 10px;
@@ -126,8 +182,12 @@ header{background-color: #fff;}
     align-items: center;
   }
 
-  #create_card{width: 95%;}
+  #create_card{
+    width: auto;
+  }
 
-  .flashcard{width: 100%;}
-
+  .flashcard{
+    width: auto;
+    overflow: visible;
+  } 
 }

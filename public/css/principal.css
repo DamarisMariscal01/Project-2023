@@ -1,119 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body{
-    position: relative;
-    width: 100%;
-    /* padding: 10%; */
-    min-height: auto;
-    height: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(255, 255, 255);
+    background-color: #e48dff;
     font-family: 'Poppins', sans-serif;
+    
+}
+.title{
+    color: #8826a6;
+}
+
+.title:hover{
+    color: #e48dff;
+}
+
+.flashcards, .archivos, .notas, .logout{
+    background-color: #e48dff;
+    color: #8826a6;
 }
 
 
-.logout{
-    position: relative;
-    top: 10px;
-    right: 0.8%;
-    flex-wrap: wrap;
-    width: 100px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    border-radius: 10px;
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-    background: none;
-    font-family: 'Poppins', sans-serif;
-    display: flex-start;
-}
-
-.logout:hover{
-  position: relative;
-  top: 10px;
-  right: 0.8%;
-  width: 100px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  border-radius: 10px;
-  color: rgb(0, 0, 0);
-  font-weight: bold;
-  background: none;
-  font-family: 'Poppins', sans-serif;
-}
-
-.heading{
-    opacity: 1;
-    text-align: center;
-    font-size: 50px;
-    font-weight: bold;
-    margin-bottom: 30px;
-    margin-top: 10%;
-    /* align-self: flex-start; */
-    margin-bottom: 100px;
-}
-
-.container{
-    position: absolute;
-    width: 90%;
-    height: 87vh;
-    border: 5px #fff;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-content: center;
-    margin-top: 20%;
-    font-family: 'Poppins', sans-serif;
-    overflow: visible;
-}
-
-.flashcards, .notas, .archivos{
-    /* padding: 10%; */
-    width: 30%;
-    height: 50%;
-    /* margin: 60px; */
-    border-radius: 50px;
-    border: none;
-    text-align: center;
-    align-self: flex-end;
-    font-family: 'Poppins', sans-serif;
-    font-weight: bold;
-    font-size: x-large;
-    margin-top: 10%;
-    cursor: pointer;
-}
-
-.flashcards:hover, .notas:hover, .archivos:hover{
-    background-color: rgb(255, 255, 255);
-}
-
-.flashcards{
-    background-color: #fb46b2;
-    transition: 0.7s;
-}
-
-.archivos{
-    background-color: #fba046;
-    transition: 0.7s;
-}
-
-.notas{
-    background-color: #f5fb46;
-    transition: 0.7s;
+.flashcards:hover, .archivos:hover, .notas:hover, .logout:hover{ 
+    background-color: #8826a6;
+    color: #ffffff;
+    transition: 0.5s;
 }

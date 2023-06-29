@@ -2,7 +2,10 @@ const express = require("express"); // para concectar con el servidor
 const path = require("path"); // para facilitar acceder a mis archivos
 const bodyParser = require("body-parser"); // para enviar y recibir datos
 const knex = require("knex"); // para acceder a la db
-const session = require("express-session");
+const session = require("express-session"); // para manejar y guardar datos específicos de los users
+// const fileUpload = require("express-fileupload"); // para hacer el file upload
+// const multer = require("multer");
+
 
 // datos para acceder a la db
 const db = knex({
@@ -20,6 +23,8 @@ const app = express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(fileUpload()); // Use the file upload middleware
+// app.use("/uploads", express.static("uploads"));
 
 app.use(session({
   secret: "secret-key", // Cambia "secret-key" por una clave secreta de tu elección
@@ -33,8 +38,8 @@ let initialPath = path.resolve(__dirname);
 app.use(express.static(initialPath));
 
 // esto es para mandar archivos desde server.js
-app.get("/", (req, res) => {
-  res.sendFile(path.join(initialPath, "index.html"));
+app.get("/home", (req, res) => {
+  res.sendFile(path.join(initialPath, "principal.html"));
 });
 
 app.get("/login", (req, res) => {
@@ -43,6 +48,10 @@ app.get("/login", (req, res) => {
 
 app.get("/register", (req, res) => {
   res.sendFile(path.join(initialPath, "register.html"));
+});
+
+app.get("/upload", (req, res) => {
+  res.sendFile(path.join(initialPath, "notes.html"));
 });
 
 app.post("/register-user", (req, res) => {
@@ -71,7 +80,7 @@ app.post("/register-user", (req, res) => {
       })
       .then((data) => {
         if (data) {
-          res.json("Registro correcto, bienvenid@");
+          res.json("Bienvenid@");
         }
       })
       .catch((err) => {
@@ -97,6 +106,7 @@ app.post("/login-user", (req, res) => {
         // si encuentra los datos, le dice este msj:
         req.session.nombre = data[0].name_user; // Establece la variable de sesión "nombre"
         res.json("Bienvenid@");
+        // res.redirect("/home"); // Redirecciona a principal.html
       } else {
         // si no encuentra los datos ó no se han llenado, aparece esto:
         res.json("Hay algún dato incorrecto");
@@ -108,7 +118,32 @@ app.post("/login-user", (req, res) => {
     });
 });
 
-// para saver el puerto en el que estamos viendo la pag
+// file upload 
+// const storage = multer.diskStorage({
+//   destination: "./uploads/",
+//   filename: function (req, file, cb) {
+//     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+//     cb(null, uniqueSuffix + path.extname(file.originalname));
+//   }
+// });
+
+// const upload = multer({ storage: storage });
+
+// app.post("/upload", upload.single("file"), (req, res) => {
+//   const file = req.file;
+
+//   if (!file) {
+//     res.status(400).send("No file uploaded");
+//   } else {
+//     // Generate the URL for accessing the uploaded file
+//     const fileUrl = req.protocol + "://" + req.get("host") + "/uploads/" + file.filename;
+
+//     res.send(fileUrl);
+//   }
+// });
+
+
+// para saber el puerto en el que estamos viendo la pag
 const port = 3000;
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

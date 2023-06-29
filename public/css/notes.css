@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body{
+    background-color: rgb(246, 231, 94);
+    font-family: 'Poppins', sans-serif;
+    
+}
+.title{
+    color: #897e00;
+}
+
+.title:hover{
+    color: #fff47c;
+    transition: 0.5s;
+}
+
+.flashcards, .archivos, .logout{
+    background-color: #fff47c;
+    color: #897e00;
+}
+
+.notas{
+    background-color: #897e00;
+    color: #fff47c;
+}
+
+
+.flashcards:hover, .archivos:hover, .notas:hover, .logout:hover{ 
+    background-color: #fff;
+    color: #897e00;
+    transition: 0.5s;
+}

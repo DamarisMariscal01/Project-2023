@@ -4,17 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/principal.css">
+    <link rel="stylesheet" href="./css/nav.css">
     <title>AceStudy</title>
 </head>
 <body>
-    <h1 class="heading">AceStudy</h1>
+    <header>
+        <div class="container">
+          <div id="header">
+            <a class="title" href="principal.html"><h1>AceStudy</h1></a>
+            <div class="nav-btn">
+                <a href="flashcards.html" class="flashcards">Flashcards</a>
+                <a href="archivos.html" class="archivos">Archivos</a>
+                <a href="notes.html" class="notas">Notas</a>
+                <a href="principal.html" class="logout">Logout</a>
+            </div>
+          </div>
+        </div>
+      </header>
 
-    <div class="container">
-        <!-- <button class="logout">Log out</button> -->
-        <button class="flashcards">Flashcards</button>
-        <button class="archivos">Archivos</button> 
-        <button class="notas">Notas</button>
-    </div>
+      <section>
+        <div class="contenido">
+          <h1>¿Qué es AceStudy?</h1>
+        </div>
+      </section>
 </body>
 <script src="./js/principal.js"></script>
 </html>
