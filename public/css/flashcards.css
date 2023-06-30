@@ -1,83 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body{
+body {
   font-family: 'Poppins', sans-serif;
   font-size: 1rem;
   background-color: #ffc3e4;
 }
-
-.show, .delete{
-  padding: 12px;
-  cursor: pointer;
-  border-radius: 1.5rem;
-  background-color: #ef2f8f;
-  font-weight: bold;
-  color: #fff;
-  border: none;
-  font-family: 'Poppins', sans-serif;
-}
-
-.show:hover, .delete:hover{
-  background-color: #ffb9dc;
-  color: #ef2f8f;
-}
-
-.container{
-  width: 1280px;
-  margin: auto;
-}
-/* 
-header{
-  background-color: #fff;
-} */
-
-/* #header{
+#header{
   display: flex;
   justify-content: space-between;
   align-items: center;
   min-height: 70px;
   padding: 0 20px;
   background: #fff;
-} */
+}
 
-.title{
+.container {
+  width: 1280px;
+  margin: auto;
+}
+
+.title {
   text-decoration: none;
   color: #cf0067;
 }
 
-.title:hover{
+.title:hover {
   text-decoration: none;
   cursor: pointer;
   color: #ff69b4;
 }
 
-#create_card{
+#create_card {
   display: none;
   width: 370px;
-  margin:auto;
+  margin: auto;
   padding: 20px;
   margin-top: 30px;
   border-radius: 12px;
   background-color: #ff50a8;
 }
 
-.fcTitle{
+.fcTitle {
   text-align: center;
   opacity: 1;
   font-size: 41px;
   font-weight: bold;
   margin-bottom: 10px;
   color: #ffffff;
-  
 }
 
-textarea{
+textarea {
   width: 100%;
   font-family: 'Poppins', sans-serif;
   resize: none;
@@ -89,105 +65,70 @@ textarea{
   border: none;
 }
 
-textarea:focus{
+textarea:focus {
   background-color: #ffc3e4;
   border: none;
 }
 
-.save, .close{
-  padding: 8px;
-  width: 162.5px;
-  border-radius: 1.5rem;
-  border: none;
-  font-weight: bold;
+.save,
+.close {
   font-family: 'Poppins', sans-serif;
-  background-color: #ffc3e4;
   font-weight: bold;
-  color: #ef2f8f;
+  color: white;
+  background-color: #ff006a;
+  border-radius: 5px;
+  border: none;
+  width: 150px;
+  padding: 8px;
+  cursor: pointer;
+  margin-right: 10px;
 }
 
-.save:hover, .close:hover{
-  background-color: transparent;
-  font-weight: bold;
-  color: #ffffff;
+.close {
+  background-color: #ff006a;
 }
 
-.save{
-  margin-left: auto;
+.close:hover {
+  background-color: #e00063;
 }
 
-.close{
-  margin-right: auto;
-}
-
-#flashcards{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  width: 100%;
-  margin: auto;
-  margin-top: 10px;
-  padding: 0px 10px;
-}
-
-.flashcard{
+.flashcard {
   width: 370px;
   height: 200px;
   word-wrap: break-word;
-  margin: 10px; 
-  background:#fff;
+  margin: 10px;
+  background: #fff;
   cursor: pointer;
   position: relative;
   border-radius: 12px;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
 }
 
-.flashcard h2{
-  font-size: 1rem;
-  text-align: center;
+.flashcard .front,
+.flashcard .back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 24px;
+  color: #000;
 }
 
-.fa-minus{
-  top: 3%;
-  right: 2%;
-  position: absolute;
-  color: #1a1a1a;
-  transition: 0.3s ease-out;
+.flashcard .front {
+  z-index: 2;
+  transform: rotateY(0deg);
+  background-color: #fff;
 }
 
-@media(max-width:1280px){
-  .container{
-    width: 100%;
-  }
+.flashcard .back {
+  transform: rotateY(180deg);
+  background-color: #ffc3e4;
 }
 
-@media(max-width:768px){
-  .flashcard{
-    margin: auto;
-  }
-
-  .flashcard{
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
-}
-
-@media(max-width:480px){
-  #header{
-    padding: 20px;
-    gap: 10px;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  #create_card{
-    width: auto;
-  }
-
-  .flashcard{
-    width: auto;
-    overflow: visible;
-  } 
+.flashcard.flipped {
+  transform: rotateY(180deg);
 }

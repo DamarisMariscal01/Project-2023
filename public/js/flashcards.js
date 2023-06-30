@@ -1,78 +1,50 @@
-var contentArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+document.addEventListener('DOMContentLoaded', () => {
+  const flashcardsContainer = document.getElementById('flashcards');
 
-document.getElementById("save_card").addEventListener("click", () => {
-  addFlashcard();
-});
+  // Obtener datos de localStorage
+  let contentArray = localStorage.getItem('items')
+    ? JSON.parse(localStorage.getItem('items'))
+    : [];
 
-document.getElementById("delete_cards").addEventListener("click", () => {
-  localStorage.clear();
-  flashcards.innerHTML = '';
-  contentArray = [];
-});
+  // Función para crear una flashcard
+  const createFlashcard = (text, index) => {
+    const flashcard = document.createElement('div');
+    flashcard.className = 'flashcard';
+    flashcard.innerHTML = `
+      <div class="front">${text.my_question}</div>
+      <div class="back">${text.my_answer}</div>
+    `;
 
-document.getElementById("show_card_box").addEventListener("click", () => {
-  document.getElementById("create_card").style.display = "block";
-});
+    flashcard.addEventListener('click', () => {
+      flashcard.classList.toggle('flipped');
+    });
 
-document.getElementById("close_card_box").addEventListener("click", () => {
-  document.getElementById("create_card").style.display = "none";
-});
+    flashcardsContainer.appendChild(flashcard);
+  };
 
-flashcardMaker = (text, delThisIndex) => {
-  const flashcard = document.createElement("div");
-  const question = document.createElement('h2');
-  const answer = document.createElement('h2');
-  const del = document.createElement('i');
+  // Recorrer los datos almacenados y crear las flashcards
+  contentArray.forEach((text, index) => {
+    createFlashcard(text, index);
+  });
 
-  flashcard.className = 'flashcard';
+  // Función para agregar una nueva flashcard
+  const addFlashcard = () => {
+    const questionInput = document.getElementById('question');
+    const answerInput = document.getElementById('answer');
+    const flashcardInfo = {
+      my_question: questionInput.value,
+      my_answer: answerInput.value
+    };
 
-  question.setAttribute("style", "border-top:2px solid hotpink; padding: 15px; margin-top:30px; text-align: center;");
-  question.textContent = text.my_question;
-
-  answer.setAttribute("style", "text-align:center; display:none; color:hotpink");
-  answer.textContent = text.my_answer;
-
-  del.className = "fas fa-minus";
-  del.addEventListener("click", () => {
-    contentArray.splice(delThisIndex, 1);
+    contentArray.push(flashcardInfo);
     localStorage.setItem('items', JSON.stringify(contentArray));
-    window.location.reload();
-  })
 
-  flashcard.appendChild(question);
-  flashcard.appendChild(answer);
-  flashcard.appendChild(del);
+    createFlashcard(flashcardInfo, contentArray.length - 1);
 
-  flashcard.addEventListener("click", () => {
-    if(answer.style.display == "none")
-      answer.style.display = "block";
-    else
-      answer.style.display = "none";
-  })
+    questionInput.value = '';
+    answerInput.value = '';
+  };
 
-  document.querySelector("#flashcards").appendChild(flashcard);
-}
-
-contentArray.forEach(flashcardMaker);
-
-addFlashcard = () => {
-  const question = document.querySelector("#question");
-  const answer = document.querySelector("#answer");
-
-  let flashcard_info = {
-    'my_question' : question.value,
-    'my_answer'  : answer.value
-  }
-
-  contentArray.push(flashcard_info);
-  localStorage.setItem('items', JSON.stringify(contentArray));
-  flashcardMaker(contentArray[contentArray.length - 1], contentArray.length - 1);
-  question.value = "";
-  answer.value = "";
-}
-
-const card = document.querySelector(".card__inner");
-
-card.addEventListener("click", function (e) {
-  card.classList.toggle('is-flipped');
+  // Evento para guardar la nueva flashcard
+  document.getElementById('save_card').addEventListener('click', addFlashcard);
 });

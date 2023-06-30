@@ -6,7 +6,6 @@ const session = require("express-session"); // para manejar y guardar datos espe
 // const fileUpload = require("express-fileupload"); // para hacer el file upload
 // const multer = require("multer");
 
-
 // datos para acceder a la db
 const db = knex({
   client: "pg",
@@ -26,11 +25,13 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(fileUpload()); // Use the file upload middleware
 // app.use("/uploads", express.static("uploads"));
 
-app.use(session({
-  secret: "secret-key", // Cambia "secret-key" por una clave secreta de tu elección
-  resave: false,
-  saveUninitialized: true
-}));
+app.use(
+  session({
+    secret: "secret-key", // Cambia "secret-key" por una clave secreta de tu elección
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 // initialPath tiene la ruta predeterminada y estática
 let initialPath = path.resolve(__dirname);
@@ -50,8 +51,16 @@ app.get("/register", (req, res) => {
   res.sendFile(path.join(initialPath, "register.html"));
 });
 
-app.get("/upload", (req, res) => {
+app.get("/notes", (req, res) => {
   res.sendFile(path.join(initialPath, "notes.html"));
+});
+
+app.get("/archivos", (req, res) => {
+  res.sendFile(path.join(initialPath, "archivos.html"));
+});
+
+app.get("/flashcards", (req, res) => {
+  res.sendFile(path.join(initialPath, "flashcards.html"));
 });
 
 app.post("/register-user", (req, res) => {
@@ -90,7 +99,6 @@ app.post("/register-user", (req, res) => {
   }
 });
 
-
 app.post("/login-user", (req, res) => {
   const { email, pass } = req.body;
 
@@ -105,8 +113,8 @@ app.post("/login-user", (req, res) => {
       if (data.length) {
         // si encuentra los datos, le dice este msj:
         req.session.nombre = data[0].name_user; // Establece la variable de sesión "nombre"
-        res.json("Bienvenid@");
-        // res.redirect("/home"); // Redirecciona a principal.html
+        res.json("Bienvenid@"+req.session.nombre);
+
       } else {
         // si no encuentra los datos ó no se han llenado, aparece esto:
         res.json("Hay algún dato incorrecto");
@@ -117,31 +125,6 @@ app.post("/login-user", (req, res) => {
       res.status(500).json({ error: "Error al obtener los datos" });
     });
 });
-
-// file upload 
-// const storage = multer.diskStorage({
-//   destination: "./uploads/",
-//   filename: function (req, file, cb) {
-//     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-//     cb(null, uniqueSuffix + path.extname(file.originalname));
-//   }
-// });
-
-// const upload = multer({ storage: storage });
-
-// app.post("/upload", upload.single("file"), (req, res) => {
-//   const file = req.file;
-
-//   if (!file) {
-//     res.status(400).send("No file uploaded");
-//   } else {
-//     // Generate the URL for accessing the uploaded file
-//     const fileUrl = req.protocol + "://" + req.get("host") + "/uploads/" + file.filename;
-
-//     res.send(fileUrl);
-//   }
-// });
-
 
 // para saber el puerto en el que estamos viendo la pag
 const port = 3000;

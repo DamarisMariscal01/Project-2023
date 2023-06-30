@@ -15,13 +15,13 @@ body{
 }
 
 .flashcards, .archivos, .logout{
-    background-color: #fff47c;
-    color: #897e00;
+    background-color: #ebdc32;
+    color: #ffffff;
 }
 
 .notas{
     background-color: #897e00;
-    color: #fff47c;
+    color: #ffffff;
 }
 
 

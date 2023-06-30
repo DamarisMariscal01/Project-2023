@@ -59,12 +59,13 @@ if (nombre == null) {
 }
 
 const validateData = (data) => {
-  if (!data.nombre) {
+  if (!data) {
     alertBox(data);
   } 
-  // else if (data.includes("Bienvenid@")) {
-  //   location.href = "/home"; // Redirecciona a principal.html
-  // }
+  else if (data.includes("Bienvenid@")) {
+    alertBox("entre");
+    window.location.href = "/home";   
+  }
 };
 
 // los msjs del res.json se van acá

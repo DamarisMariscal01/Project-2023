@@ -1,63 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="image/png" href="flashcard.png" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
-    <link rel="stylesheet" href="./css/flashcards.css" />
-    <link rel="stylesheet" href="./css/nav.css">
-    <title>Flashcards</title>
-  </head>
-  <body>
-    <main>
-      <!-- <header>
-        <div class="container">
-          <div id="header">
-            <a class="title" href="principal.html"><h1>AceStudy</h1></a>
-            <div class="nav-btn">
-                <a href="flashcards.html" class="flashcards">Flashcards</a>
-                <a href="archivos.html" class="archivos">Archivos</a>
-                <a href="notes.html" class="notas">Notas</a>
-                <a href="principal.html" class="logout">Logout</a
-              </div>
-          </div>
-        </div>
-      </header> -->
-      <header>
-        <div class="container">
-          <div id="header">
-            <a href="./principal.html"><h1 class="title">AceStudy</h1></a>
-            <div>
-              <button class="show" id="show_card_box">Add cards</button>
-              <button class="delete" id="delete_cards">Close All</button>
-            </div>
-          </div>
-        </div>
-      </header>
-
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" type="image/png" href="flashcard.png" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"/>
+  <link rel="stylesheet" href="./css/flashcards.css" />
+  <link rel="stylesheet" href="./css/nav.css">
+  <title>Flashcards</title>
+</head>
+<body>
+  <main>
+    <header>
       <div class="container">
-        <div id="create_card">
-          <h2 class="fcTitle">Flashcard</h2>
-          <textarea id="question" maxlength="280" placeholder="Pregunta"></textarea>
-          <textarea id="answer" placeholder="Respuesta"></textarea>
-          <div>
-            <button class="save" id="save_card"> Save </button> 
-            <button class="close" id="close_card_box"> Close </button>
+        <div id="header">
+          <a class="title" href="/home"><h1>AceStudy</h1></a>
+          <div class="nav-btn">
+            <a href="/flashcards" class="flashcards">Flashcards</a>
+            <a href="/archivos" class="archivos">Archivos</a>
+            <a href="/notes" class="notas">Notas</a>
+            <a href="/home" class="logout">Logout</a>
           </div>
         </div>
       </div>
-      
-      <section>
-        <div class="container">
-          <div id="flashcards"></div>
-        </div>
-      </section>
-    </main>
+    </header>
 
-    <script src="./js/flashcards.js"></script>
-  </body>
+    <header>
+      <div class="container">
+        <div id="header">
+          <div id="create_card">
+            <h2 class="fcTitle">Flashcard</h2>
+            <textarea id="question" maxlength="280" placeholder="Pregunta"></textarea>
+            <textarea id="answer" placeholder="Respuesta"></textarea>
+            <div>
+              <button class="save" id="save_card">Save</button>
+              <button class="close" id="close_card_box">Close</button>
+            </div>
+          </div>
+        </div>
+        </div>
+    </header>
+
+    <section>
+      <div class="container">
+        <div id="flashcards"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./js/flashcards.js"></script>
+</body>
 </html>
-<body>
