@@ -1,50 +1,71 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const flashcardsContainer = document.getElementById('flashcards');
+const flashcardContainer = document.querySelector(".flashcard-container");
+const addFlashcardButton = document.getElementById("addFlashcard");
+const questionInput = document.getElementById("question");
+const answerInput = document.getElementById("answer");
 
-  // Obtener datos de localStorage
-  let contentArray = localStorage.getItem('items')
-    ? JSON.parse(localStorage.getItem('items'))
-    : [];
-
-  // Función para crear una flashcard
-  const createFlashcard = (text, index) => {
-    const flashcard = document.createElement('div');
-    flashcard.className = 'flashcard';
-    flashcard.innerHTML = `
-      <div class="front">${text.my_question}</div>
-      <div class="back">${text.my_answer}</div>
-    `;
-
-    flashcard.addEventListener('click', () => {
-      flashcard.classList.toggle('flipped');
+// recuperar los flashcards al cargar la página
+fetch("/flashcards-data")
+  .then((response) => response.json())
+  .then((data) => {
+    data.forEach((flashcard) => {
+      const { front_fc, back_fc } = flashcard;
+      const newFlashcard = createFlashcard(front_fc, back_fc);
+      flashcardContainer.appendChild(newFlashcard);
     });
-
-    flashcardsContainer.appendChild(flashcard);
-  };
-
-  // Recorrer los datos almacenados y crear las flashcards
-  contentArray.forEach((text, index) => {
-    createFlashcard(text, index);
+  })
+  .catch((error) => {
+    console.error(error);
   });
 
-  // Función para agregar una nueva flashcard
-  const addFlashcard = () => {
-    const questionInput = document.getElementById('question');
-    const answerInput = document.getElementById('answer');
-    const flashcardInfo = {
-      my_question: questionInput.value,
-      my_answer: answerInput.value
-    };
+addFlashcardButton.addEventListener("click", () => {
+  const question = questionInput.value;
+  const answer = answerInput.value;
 
-    contentArray.push(flashcardInfo);
-    localStorage.setItem('items', JSON.stringify(contentArray));
+  if (question && answer) {
+    const flashcard = createFlashcard(question, answer);
+    flashcardContainer.appendChild(flashcard);
 
-    createFlashcard(flashcardInfo, contentArray.length - 1);
+    fetch("/save-flashcard", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ question, answer }),
+    })
+      .then((response) => {
+        if (response.ok) {
+          console.log("Flashcard guardada en la base de datos.");
+        } else {
+          throw new Error("Error al guardar la flashcard en la base de datos.");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
 
-    questionInput.value = '';
-    answerInput.value = '';
-  };
-
-  // Evento para guardar la nueva flashcard
-  document.getElementById('save_card').addEventListener('click', addFlashcard);
+    questionInput.value = "";
+    answerInput.value = "";
+  }
 });
+
+function createFlashcard(question, answer) {
+  const flashcard = document.createElement("div");
+  flashcard.classList.add("flashcard");
+
+  const front = document.createElement("div");
+  front.classList.add("front");
+  front.innerHTML = `<div class="text">${question}</div>`;
+
+  const back = document.createElement("div");
+  back.classList.add("back");
+  back.innerHTML = `<div class="text">${answer}</div>`;
+
+  flashcard.appendChild(front);
+  flashcard.appendChild(back);
+
+  flashcard.addEventListener("click", () => {
+    flashcard.classList.toggle("flipped");
+  });
+
+  return flashcard;
+}

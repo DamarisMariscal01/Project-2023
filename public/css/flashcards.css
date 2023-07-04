@@ -1,134 +1,157 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 body {
+  background-color: #FFD3D3;
   font-family: 'Poppins', sans-serif;
-  font-size: 1rem;
-  background-color: #ffc3e4;
-}
-#header{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 70px;
-  padding: 0 20px;
-  background: #fff;
-}
-
-.container {
-  width: 1280px;
-  margin: auto;
-}
-
-.title {
+  margin: 0;
+  padding: 0;
   text-decoration: none;
-  color: #cf0067;
-}
-
-.title:hover {
-  text-decoration: none;
-  cursor: pointer;
-  color: #ff69b4;
-}
-
-#create_card {
-  display: none;
-  width: 370px;
-  margin: auto;
-  padding: 20px;
-  margin-top: 30px;
-  border-radius: 12px;
-  background-color: #ff50a8;
 }
 
 .fcTitle {
   text-align: center;
-  opacity: 1;
-  font-size: 41px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: #ffffff;
+  color: #FF0090;
+  font-size: 50px;
+  margin-top: -5px;
 }
 
-textarea {
-  width: 100%;
-  font-family: 'Poppins', sans-serif;
-  resize: none;
-  border-radius: 1.5rem;
-  text-align: center;
-  margin-bottom: 10px;
-  padding: 4px;
-  align-items: center;
-  border: none;
-}
-
-textarea:focus {
-  background-color: #ffc3e4;
-  border: none;
-}
-
-.save,
-.close {
-  font-family: 'Poppins', sans-serif;
-  font-weight: bold;
-  color: white;
-  background-color: #ff006a;
-  border-radius: 5px;
-  border: none;
-  width: 150px;
-  padding: 8px;
-  cursor: pointer;
-  margin-right: 10px;
-}
-
-.close {
-  background-color: #ff006a;
-}
-
-.close:hover {
-  background-color: #e00063;
+.flashcard-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start; /* Ajustar según sea necesario */
+  margin-top: 20px;
 }
 
 .flashcard {
   width: 370px;
   height: 200px;
-  word-wrap: break-word;
-  margin: 10px;
-  background: #fff;
-  cursor: pointer;
-  position: relative;
-  border-radius: 12px;
-  transition: transform 0.6s;
+  background-color: white;
+  border-radius: 10px;
+  padding-top: 10px;
+  box-sizing: border-box;
+  margin-right: 10px;
+  margin-bottom: 10px;
   transform-style: preserve-3d;
-}
-
-.flashcard .front,
-.flashcard .back {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  backface-visibility: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  color: #000;
-}
-
-.flashcard .front {
-  z-index: 2;
-  transform: rotateY(0deg);
-  background-color: #fff;
-}
-
-.flashcard .back {
-  transform: rotateY(180deg);
-  background-color: #ffc3e4;
+  cursor: pointer;
+  transition: transform 0.6s;
 }
 
 .flashcard.flipped {
   transform: rotateY(180deg);
+}
+
+.flashcard .front,
+.flashcard .back {
+  position: absolute;
+  width: 370px;
+  height: 200px;
+  backface-visibility: hidden;
+  text-align: center;
+  align-items: center;
+}
+
+.flashcard .front {
+  text-align: center;
+  color: #000000;
+}
+
+.flashcard .back {
+  transform: rotateY(180deg);
+  color: #FF0090;
+}
+
+.flashcard .text {
+  font-size: 20px;
+  text-align: center;
+}
+
+.form-section {
+  width: 370px;
+  padding: 20px;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  margin-top: 30px;
+  border-radius: 12px;
+  background-color: #ff8dc6;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.form-section input,
+.form-section button {
+  display: block;
+  margin-bottom: 10px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.form-section button {
+  background-color: #FF0090;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  width: 95%;
+}
+
+.form-section button:hover {
+  background-color: #ffff;
+  color: #FF0090;
+  border: none;
+  transition: 0.3s;
+}
+
+.form-section input {
+  border-radius: 5px;
+  border: none;
+  overflow: scroll;
+  width: 95%;
+  height: 50px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.form-section input:focus {
+  border: none;
+  overflow: scroll;
+  background-color: #FFD3D3;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* estilos nav */
+.title {
+  color: #FF0090;
+}
+
+.title:hover {
+  color: #ff8dc6;
+  transition: 0.5s;
+}
+
+.notas,
+.archivos,
+.logout {
+  /* background-color: #ebdc32; */
+  color: #ff8dc6;
+}
+
+.flashcards {
+  /* background-color: #897e00; */
+  color: #FF0090;
+}
+
+
+.flashcards:hover,
+.archivos:hover,
+.notas:hover,
+.logout:hover {
+  background-color: #fff;
+  color: #FFD3D3;
+  transition: 0.5s;
 }

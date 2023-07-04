@@ -110,15 +110,3 @@ input:focus::placeholder{
     text-align: center;
     transition: 1s;
 }
-
-.email{
-    text-transform: lowercase;
-}
-
-.nombre{
-    text-transform: capitalize;
-}
-
-.email::placeholder{
-    text-transform: capitalize;
-}

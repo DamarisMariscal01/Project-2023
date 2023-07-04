@@ -8,13 +8,6 @@ form.forEach((item, i) => {
   }, i * 100);
 });
 
-// verifica si hay un valor almacenado en la variable de sesión "nombre" con sessionStorage, si hay algo ahí, redirecciona a '/'
-window.onload = () => {
-  if (sessionStorage.email) {
-    location.href = "/home";
-  }
-};
-
 // obtiene referencias a los elementos del form
 const nombre = document.querySelector(".nombre") || null;
 const email = document.querySelector(".email");

@@ -15,18 +15,15 @@ body{
 }
 
 .flashcards, .notas, .logout{
-    background-color: #43c02c;
-    color: #ffffff  ;
+    color: #43c02c;
 }
 
 .archivos{
-    background-color: #1e760e;
-    color: #ffffff;
+    color: #1e760e;
 }
 
 
 .flashcards:hover, .archivos:hover, .notas:hover, .logout:hover{ 
-    background-color: #fff;
-    color: #1e760e;
+    color: #8bff76;
     transition: 0.5s;
 }
