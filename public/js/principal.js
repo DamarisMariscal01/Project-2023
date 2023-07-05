@@ -1,16 +1,24 @@
-// const saludo = document.querySelector('.saludo');
+const carousel = document.querySelector('.carousel');
+const carouselInner = carousel.querySelector('.carousel-inner');
+const slides = carouselInner.querySelectorAll('.slide');
+let currentIndex = 0;
+const slideWidth = carousel.clientWidth;
+const prevButton = carousel.querySelector('.prev-slide');
+const nextButton = carousel.querySelector('.next-slide');
 
-// window.onload = () => {
-//     if(!sessionStorage.nombre){
-//         location.href = '/login';
-//     } else{
-//         saludo.innerHTML = `hello ${sessionStorage.nombre}`;
-//     }
-// }
+function goToSlide(index) {
+  carouselInner.style.transform = `translateX(-${index * slideWidth}px)`;
+}
 
-// const logOut = document.querySelector('.logout');
+function goToNextSlide() {
+  currentIndex = (currentIndex + 1) % slides.length;
+  goToSlide(currentIndex);
+}
 
-// logOut.onclick = () => {
-//     sessionStorage.clear();
-//     location.reload();
-// }
+function goToPrevSlide() {
+  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+  goToSlide(currentIndex);
+}
+
+nextButton.addEventListener('click', goToNextSlide);
+prevButton.addEventListener('click', goToPrevSlide);

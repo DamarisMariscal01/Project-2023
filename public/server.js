@@ -3,7 +3,6 @@ const path = require("path"); // para facilitar acceder a mis archivos
 const bodyParser = require("body-parser"); // para enviar y recibir datos
 const knex = require("knex"); // para acceder a la db
 const session = require("express-session"); // para manejar y guardar datos específicos de los users
-const shortid = require('shortid'); // para generar links en el upload
 
 // datos para acceder a la db
 const db = knex({
@@ -19,7 +18,7 @@ const db = knex({
 
 const app = express();
 
-app.use(bodyParser.json());
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(
@@ -59,10 +58,6 @@ app.get("/logout", (req, res) => {
 
 app.get("/notes", (req, res) => {
   res.sendFile(path.join(initialPath, "notes.html"));
-});
-
-app.get("/archivos", (req, res) => {
-  res.sendFile(path.join(initialPath, "archivos.html"));
 });
 
 app.get("/flashcards", (req, res) => {

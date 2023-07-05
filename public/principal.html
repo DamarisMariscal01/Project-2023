@@ -8,26 +8,58 @@
     <title>AceStudy</title>
 </head>
 <body>
-    <header>
-        <div class="container">
-          <div id="header">
-            <a class="title" href="/home"><h1>AceStudy</h1></a>
-            <div class="nav-btn">
-              <a href="/flashcards" class="flashcards">Flashcards</a>
-              <a href="/archivos" class="archivos">Archivos</a>
-              <a href="/notes" class="notas">Notas</a>
-              <!-- <a href="/user" id="user-btn">Perfil</a> -->
-              <a href="/logout" class="logout">Logout</a>
-            </div>
-          </div>
+  <header>
+    <div class="container">
+      <div id="header">
+        <a class="title" href="/home"><h1>AceStudy</h1></a>          <div class="nav-btn">
+          <a href="/flashcards" class="flashcards">Flashcards</a>
+          <a href="/notes" class="notas">Notas</a>
+          <a href="/logout" class="logout">Logout</a>
         </div>
-      </header>
+      </div>
+    </div>
+  </header>
 
-      <section>
-        <div class="contenido">
-          <h1>¿Qué es AceStudy?</h1>
+  <section>
+    <div class="contenido">
+      <img class="imgHome" src="./imgs/m1.png">
+      <img class="imgHome" src="./imgs/m2.png">
+      <img class="imgHome" src="./imgs/m3.png">
+    </div>
+  </section>
+
+  <div class="carousel">
+    <div class="carousel-inner">
+      <div class="slide" id="slide1">
+        <div class="slide-text">
+          <h2>AceStudy</h2>
+          <p>Una combinación de palabras, "Ace" que significa "As" o alguien sobresaliente, y "Study" o estudio.</p>
         </div>
-      </section>
+      </div>
+      <div class="slide" id="slide2">
+        <div class="slide-text">
+          <h2>Flashcards</h2>
+          <p>Una herramienta que se utiliza mucho al estudiar son las flashcards, pues ayudan a mejorar la memoria mediante la recuperación de información.</p>
+        </div>
+      </div>
+      <div class="slide" id="slide3">
+        <div class="slide-text">
+          <h2>Notas</h2>
+          <p>Muchos estudiantes necesitan escribir cosas importantes en un mismo espacio, sin tener que abrir tantas apps, es por eso que implementamos en una sección las conocidas Notas rápidas.</p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-controls">
+      <button class="prev-slide">&lt;</button>
+      <button class="next-slide">&gt;</button>
+    </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <h3>Damaris Mariel Ramos Mariscal</h3>
+    <h4>Alive 2023 | AceStudy</h4>
+  </footer>
 </body>
 <script src="./js/principal.js"></script>
 </html>
